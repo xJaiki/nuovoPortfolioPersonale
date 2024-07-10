@@ -1,0 +1,25 @@
+# Usa un'immagine base con Node.js
+FROM node:14-alpine
+
+# Imposta la directory di lavoro
+WORKDIR /soldini-front
+
+# Copia il file package.json e installa le dipendenze
+COPY package.json .
+RUN npm install
+
+# Copia il resto del codice dell'app
+COPY . .
+
+# Compila l'app React
+RUN npm run build
+
+# Usa un'immagine leggera per servire i file statici
+FROM nginx:alpine
+COPY --from=0 /soldini-front/build /usr/share/nginx/html
+
+# Esponi la porta per l'app
+EXPOSE 80
+
+# Specifica il comando per avviare Nginx
+CMD ["nginx", "-g", "daemon off;"]

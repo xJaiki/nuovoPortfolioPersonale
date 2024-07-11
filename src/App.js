@@ -4,7 +4,6 @@ import Home from './Components/Common/Home';
 // import Portfolio from './Components/Common/Portfolio';
 // import Curriculum from './Components/Common/Curriculum';
 import NotFound from './Components/Common/NotFound';
-import Nav from './Components/Common/Nav';
 
 const App = () => {
     return (

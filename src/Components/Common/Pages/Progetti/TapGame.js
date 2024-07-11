@@ -45,44 +45,6 @@ const FlippableProjectCard = ({ title, content, imageSrc, gradientClassName, cla
 };
 
 const TapGame = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = [
-        {
-            original: require('../../../../assets/ftg/ftg1.png'),
-            thumbnail: require('../../../../assets/ftg/ftg1.png')
-        },
-        {
-            original: require('../../../../assets/ftg/ftg2.png'),
-            thumbnail: require('../../../../assets/ftg/ftg2.png')
-        },
-        {
-            original: require('../../../../assets/ftg/ftg3.png'),
-            thumbnail: require('../../../../assets/ftg/ftg3.png')
-        },
-        {
-            original: require('../../../../assets/ftg/ftg4.png'),
-            thumbnail: require('../../../../assets/ftg/ftg4.png')
-        },
-        {
-            original: require('../../../../assets/ftg/ftg5.png'),
-            thumbnail: require('../../../../assets/ftg/ftg5.png')
-        },
-        {
-            original: require('../../../../assets/ftg/ftg6.png'),
-            thumbnail: require('../../../../assets/ftg/ftg6.png')
-        },
-    ];
-
-    const handleImageClick = (index) => {
-        setCurrentImageIndex(index);
-        setIsOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsOpen(false);
-    };
-
     return (
         <div className="h-screen grid grid-cols-5 grid-rows-5 gap-4 py-4 px-10">
             <StaticProjectCard

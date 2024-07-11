@@ -46,8 +46,6 @@ const FlippableProjectCard = ({ title, content, imageSrc, gradientClassName, cla
 };
 
 const LTMS = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const images = [
         {
             original: require('../../../../assets/ltms/ltms1.png'),
@@ -74,15 +72,6 @@ const LTMS = () => {
             thumbnail: require('../../../../assets/ltms/ltms6.png')
         },
     ];
-
-    const handleImageClick = (index) => {
-        setCurrentImageIndex(index);
-        setIsOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsOpen(false);
-    };
 
     return (
         <div className="h-screen grid grid-cols-5 grid-rows-5 gap-4 py-4 px-10" style={{ backgroundColor: '#1f1f1ff' }}>

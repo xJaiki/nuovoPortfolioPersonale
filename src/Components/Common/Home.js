@@ -1,8 +1,5 @@
 import React, { useRef } from 'react';
-import { Select, SelectItem, Input, Button, Card, CardBody, DatePicker, DateRangePicker, Chip } from '@nextui-org/react';
-import { CalendarDate, parseDate } from "@internationalized/date";
 import Land from './Pages/Land';
-import Progetto1 from './Pages/Progetto1';
 import Progetto2 from './Pages/Progetto2';
 import TapGame from './Pages/Progetti/TapGame';
 import LTMS from './Pages/Progetti/LTMS';
@@ -59,10 +56,6 @@ const Home = () => {
             </div>
         </div>
     );
-
-    {/* <Progetto3 />
-            <Curriculum />
-            <Contatti /> */}
 };
 
 export default Home;

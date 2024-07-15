@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Land from './Pages/Land';
 import Progetto2 from './Pages/Progetto2';
 import TapGame from './Pages/Progetti/TapGame';
@@ -7,9 +7,12 @@ import TREEMMEESSE from './Pages/Progetti/TREEMMEESSE';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
     const horizontalScrollRef = useRef(null);
+    const verticalScrollRef = useRef(null);
 
     const scrollLeft = () => {
         if (horizontalScrollRef.current) {
@@ -22,6 +25,18 @@ const Home = () => {
             horizontalScrollRef.current.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
         }
     };
+
+    const scrollTop = () => {
+        if (verticalScrollRef.current) {
+            verticalScrollRef.current.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+        }
+    }
+    
+    const scrollBottom = () => {
+        if (verticalScrollRef.current) {
+            verticalScrollRef.current.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+        }
+    }
 
     return (
         <div className="snap-y snap-mandatory overflow-y-scroll h-screen flex-grow z-0">

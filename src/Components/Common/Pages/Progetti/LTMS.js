@@ -3,7 +3,10 @@ import './styles.css';
 import { Button } from '@nextui-org/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faClose } from '@fortawesome/free-solid-svg-icons';
-import ImageGallery from 'react-image-gallery';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Cursor } from 'react-creative-cursor';
+import 'react-creative-cursor/dist/styles.css';
 
 const StaticProjectCard = ({ title, content, className }) => {
     return (
@@ -26,7 +29,7 @@ const FlippableProjectCard = ({ title, content, imageSrc, gradientClassName, cla
         <div
             className={`card ${flipped ? 'flipped' : ''} ${className}`}
             onClick={() => setFlipped(!flipped)}>
-            <div className="card-inner">
+            <div className="card-inner" data-cursor-size="50px">
                 <div className={`card-front p-5 ${gradientClassName} shadow-lg rounded-lg overflow-hidden`}>
                     <img src={imageSrc} alt={title} className="object-scale-down w-full h-full rounded-lg" />
                     <Button className='absolute bottom-2 right-2 rounded-full' size='sm' isIconOnly onClick={() => setFlipped(!flipped)} variant='faded' color='primary'>
@@ -73,8 +76,12 @@ const LTMS = () => {
         },
     ];
 
+    const openImage = (index) => () => {
+        window.open(images[index].original, '_blank');
+    };
+
     return (
-        <div className="h-screen grid grid-cols-3 md:grid-cols-5 grid-rows-5 gap-2 py-2 px-10 md:gap-4 md:py-4"
+        <div className="h-screen grid grid-cols-3 md:grid-cols-5 grid-rows-5 gap-2 py-2 px-10 md:gap-3 md:py-4"
             style={{ backgroundColor: '#1f1f1ff' }}>
 
             <StaticProjectCard
@@ -138,16 +145,13 @@ const LTMS = () => {
                 <div className="card w-full h-full">
                     <div className="card-inner flex justify-center items-center p-5 gradient-darkred-red rounded-lg shadow-lg overflow-hidden flex-col">
                         <h1 className="text-3xl md:text-5xl font-extrabold text-white absolute top-8 left-5 hidden md:block" >Immagini</h1>
-                        <ImageGallery
-                            items={images}
-                            showPlayButton={false}
-                            showFullscreenButton={true}
-                            showBullets={true}
-                            showThumbnails={false}
-                            showIndex={false}
-                            showNav={true}
-                            useBrowserFullscreen={true}
-                        />
+                        <Carousel showThumbs={false} showStatus={false} infiniteLoop={true} className="md:w-3/4 md:h-2/4 w-3/4 h-full">
+                            {images.map((image, index) => (
+                                <div key={index} onClick={openImage(index)}>
+                                    <img src={image.original} alt="" />
+                                </div>
+                            ))}
+                        </Carousel>
                     </div>
                 </div>
             </div>

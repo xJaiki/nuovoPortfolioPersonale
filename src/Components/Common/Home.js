@@ -4,6 +4,7 @@ import Progetto2 from './Pages/Progetto2';
 import TapGame from './Pages/Progetti/TapGame';
 import LTMS from './Pages/Progetti/LTMS';
 import TREEMMEESSE from './Pages/Progetti/TREEMMEESSE';
+import Miscs from './Pages/Progetti/Miscs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -44,7 +45,7 @@ const Home = () => {
                 <Land />
             </div>
             <div className="snap-always snap-center h-screen flex-shrink-0 relative" id="page20">
-                <div ref={horizontalScrollRef} className="h-screen w-full overflow-x-scroll snap-x snap-mandatory flex">
+                <div ref={horizontalScrollRef} className="h-100 w-full overflow-x-scroll snap-x snap-mandatory flex">
                     <div className="snap-center flex-shrink-0 w-screen h-screen" id="page21">
                         <TapGame />
                     </div>
@@ -54,6 +55,9 @@ const Home = () => {
                     <div className="snap-center flex-shrink-0 w-screen h-screen" id="page23">
                         <TREEMMEESSE />
                     </div>
+                    <div className="snap-center flex-shrink-0 w-screen h-screen" id="page24">
+                        <Miscs />
+                    </div> 
                 </div>
                 <button 
                     onClick={scrollLeft} 

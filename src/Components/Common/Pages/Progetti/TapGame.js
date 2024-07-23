@@ -3,6 +3,8 @@ import './styles.css';
 import { Button } from '@nextui-org/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faClose, faFaceFrown } from '@fortawesome/free-solid-svg-icons';
+import { Cursor } from 'react-creative-cursor';
+import 'react-creative-cursor/dist/styles.css';
 
 const StaticProjectCard = ({ title, content, className }) => {
     return (
@@ -11,8 +13,12 @@ const StaticProjectCard = ({ title, content, className }) => {
                 <div className="card-front flex flex-col p-4 md:p-8 text-white">
                     <h1 className="text-2xl md:text-5xl font-extrabold mb-1 md:mb-4">{title}</h1>
                     <p className="text-sm md:text-lg mb-3 md:mb-6">{content}</p>
-                    <Button color='primary' size='lg' className='py-4 text-black rounded-lg mb-4' onClick={() => window.open('https://tapgame.mariodimarino.com/')}>Gioca qui!</Button>
-                    <Button color='primary' size='lg' className='py-4 text-black rounded-lg' onClick={() => window.open('https://github.com/xJaiki/Faster-Than-Green')}>GitHub</Button>
+                    <div data-cursor-size="50px">
+                        <Button data-cursor-magnetic color='primary' size='lg' className='py-4 text-black rounded-lg mb-4' onClick={() => window.open('https://tapgame.mariodimarino.com/')}>Gioca qui!</Button>
+                    </div>
+                    <div data-cursor-size="50px">
+                        <Button data-cursor-magnetic color='primary' size='lg' className='py-4 text-black rounded-lg' onClick={() => window.open('https://github.com/xJaiki/Faster-Than-Green')}>GitHub</Button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -22,13 +28,14 @@ const StaticProjectCard = ({ title, content, className }) => {
 const FlippableProjectCard = ({ title, content, imageSrc, gradientClassName, className }) => {
     const [flipped, setFlipped] = useState(false);
 
+   
     return (
         <div
             className={`card ${flipped ? 'flipped' : ''} ${className}`}
             onClick={() => setFlipped(!flipped)}>
-            <div className="card-inner">
+            <div className="card-inner" data-cursor-size="50px">
                 <div className={`card-front p-5 ${gradientClassName} shadow-lg rounded-lg overflow-hidden`}>
-                    <img src={imageSrc} alt={title} className="object-scale-down w-full h-full rounded-lg" />
+                    <img src={imageSrc} alt={title} className="object-scale-down w-full h-full rounded-lg"  />
                     <Button className='absolute bottom-2 right-2 rounded-full' size='sm' isIconOnly onClick={() => setFlipped(!flipped)} variant='faded' color='primary'>
                         <FontAwesomeIcon icon={faInfo} />
                     </Button>
@@ -47,7 +54,7 @@ const FlippableProjectCard = ({ title, content, imageSrc, gradientClassName, cla
 
 const TapGame = () => {
     return (
-        <div className="h-screen grid grid-cols-3 grid-rows-5 gap-2 md:gap-4 py-2 md:py-4 px-10 md:grid-cols-5 md:grid-rows-5">
+        <div className="h-screen grid grid-cols-3 grid-rows-5 gap-2 md:gap-3 py-2 md:py-4 px-10 md:grid-cols-5 md:grid-rows-5">
 
             {/*!SECTION Titolo */}
             <StaticProjectCard
